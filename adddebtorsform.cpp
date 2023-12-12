@@ -19,6 +19,7 @@ AddDebtorsForm::AddDebtorsForm(QVector<QVector<QString>> lines, QWidget *parent)
 AddDebtorsForm::~AddDebtorsForm() { delete ui; }
 
 void AddDebtorsForm::on_confirmButton_clicked() {
+  debtors.clear();
   for (int i = 0; i < ui->listWidget->count(); ++i) {
     auto item = ui->listWidget->item(i);
     if (item->checkState() == Qt::Checked) {

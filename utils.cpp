@@ -104,7 +104,7 @@ QString utils::calculateDebts() {
 
   int i = 0;
   int j = 0;
-  while (i != operations.size() && j != operations.size()) {
+  while (i < operations.size() && j < operations.size()) {
     int transited;
     QString nameCreditor = operationsSortedbySpended[i].first;
     QString nameDebtor = operationsSortedbyLended[j].first;
@@ -126,7 +126,7 @@ QString utils::calculateDebts() {
     }
     elemCreditor->first -= transited;
     elemDebtor->second -= transited;
-    if (transited)
+    if (transited && nameCreditor != nameDebtor)
       retString += QString(nameDebtor + "->" + nameCreditor + ": " +
                            QString::number(transited) + '\n');
   }
